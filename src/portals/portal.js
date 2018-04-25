@@ -15,13 +15,15 @@ Portal.prototype.writeHead = function (response, statusCode, headers) {
   return response;
 };
 
-Portal.prototype.received = function (request, response) {
+Portal.prototype.received = function (request, response, data) {
   var date = new Date();
   var hours = ('0' + date.getHours()).slice(-2);
   var minutes = ('0' + date.getMinutes()).slice(-2);
   var seconds = ('0' + date.getSeconds()).slice(-2);
 
   out.incoming(hours + ':' + minutes + ':' + seconds + ' -> ' + request.method + ' ' + this.name + request.url);
+  if(data) { out.incoming(data); }
+
   response.setHeader('Server', 'stubby/' + CLI.version() + ' node/' + process.version + ' (' + process.platform + ' ' + process.arch + ')');
 
   if (request.headers.origin != null) {
@@ -45,7 +47,7 @@ Portal.prototype.received = function (request, response) {
   return response;
 };
 
-Portal.prototype.responded = function (status, url, message) {
+Portal.prototype.responded = function (status, url, message, data) {
   var fn;
   var date = new Date();
   var hours = ('0' + date.getHours()).slice(-2);
@@ -73,6 +75,7 @@ Portal.prototype.responded = function (status, url, message) {
   }
 
   out[fn](hours + ':' + minutes + ':' + seconds + ' <- ' + status + ' ' + this.name + url + ' ' + message);
+  if(data) { out[fn](data); }
 };
 
 module.exports.Portal = Portal;

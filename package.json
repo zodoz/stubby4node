@@ -1,6 +1,6 @@
 {
-  "name": "stubby",
-  "version": "4.0.0",
+  "name": "logging-stubby",
+  "version": "4.0.1",
   "author": {
     "name": "Eric Mrak",
     "email": "mail@ericmrak.info"
@@ -26,6 +26,9 @@
     {
       "name": "Eric Mrak",
       "email": "mail@ericmrak.info"
+    }, {
+      "name": "Mike Kent",
+      "url": "https://www.github.com/zodoz"
     }
   ],
   "directories": {

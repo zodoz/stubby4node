@@ -27,7 +27,7 @@ Stubs.prototype.server = function (request, response) {
   request.on('end', function () {
     var criteria;
 
-    self.received(request, response);
+    self.received(request, response, data);
 
     criteria = {
       url: extractUrl(request.url),
@@ -44,7 +44,7 @@ Stubs.prototype.server = function (request, response) {
       } else {
         self.writeHead(response, endpointResponse.status, endpointResponse.headers);
         response.write(endpointResponse.body);
-        self.responded(endpointResponse.status, request.url);
+        self.responded(endpointResponse.status, request.url, null, endpointResponse.body);
       }
 
       response.end();

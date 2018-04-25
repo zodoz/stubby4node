@@ -753,3 +753,4 @@ Breaking changes
 
 * __Copyright__ 2015 Eric Mrak, Alexander Zagniotov
 * __License__ Apache v2.0
+* Primary change: logging of request and response bodies
