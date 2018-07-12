@@ -22,6 +22,7 @@ Portal.prototype.received = function (request, response, data) {
   var seconds = ('0' + date.getSeconds()).slice(-2);
 
   out.incoming(hours + ':' + minutes + ':' + seconds + ' -> ' + request.method + ' ' + this.name + request.url);
+  out.incoming("headers: "+JSON.stringify(request.headers));
   if(data) { out.incoming(data); }
 
   response.setHeader('Server', 'stubby/' + CLI.version() + ' node/' + process.version + ' (' + process.platform + ' ' + process.arch + ')');
