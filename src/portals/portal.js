@@ -21,7 +21,9 @@ Portal.prototype.received = function (request, response, data) {
   var minutes = ('0' + date.getMinutes()).slice(-2);
   var seconds = ('0' + date.getSeconds()).slice(-2);
 
-  out.incoming(hours + ':' + minutes + ':' + seconds + ' -> ' + request.method + ' ' + this.name + request.url);
+  out.incoming(hours + ':' + minutes + ':' + seconds + ' | ' +
+    request.connection.remoteAddress + ' -> ' + request.method + ' ' +
+    this.name + request.url);
   out.incoming("headers: "+JSON.stringify(request.headers));
   if(data) { out.incoming(data); }
 
